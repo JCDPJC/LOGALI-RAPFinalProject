@@ -3,13 +3,13 @@
  <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
   <asx:values>
    <DD01V>
-    <DOMNAME>ZDO_IMAGEURL_6320</DOMNAME>
+    <DOMNAME>ZDO_DESCRIPTION_6320</DOMNAME>
     <DDLANGUAGE>E</DDLANGUAGE>
     <DATATYPE>CHAR</DATATYPE>
-    <LENG>000256</LENG>
-    <OUTPUTLEN>000256</OUTPUTLEN>
+    <LENG>000040</LENG>
+    <OUTPUTLEN>000040</OUTPUTLEN>
     <LOWERCASE>X</LOWERCASE>
-    <DDTEXT>Image URL</DDTEXT>
+    <DDTEXT>Description</DDTEXT>
     <DOMMASTER>E</DOMMASTER>
    </DD01V>
   </asx:values>
