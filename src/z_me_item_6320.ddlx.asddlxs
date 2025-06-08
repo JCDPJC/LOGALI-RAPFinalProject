@@ -1,0 +1,81 @@
+@Metadata.layer: #CORE
+
+@UI: { headerInfo: { typeName: 'Item',
+                     typeNamePlural: 'Items',
+                     title: { type: #STANDARD,
+                              value: 'ItemID'
+                            }
+                    }
+     }
+annotate entity Z_C_ITEM_6320 with
+{
+  // Facet creation
+  //  @UI.facet: [{ id: 'Item',
+  //                purpose: #STANDARD,
+  //                type: #IDENTIFICATION_REFERENCE,  //Object in the Entity
+  //                label: 'Items',
+  //                position: 10 }]
+
+  @UI.facet: [ {  id: 'Item',
+                  isSummary: true,
+                  label : 'Item',
+                  type: #COLLECTION,
+                  position: 10},
+
+               {  id: 'General',
+                  parentId: 'Item',
+                  label : 'Details',
+                  type: #IDENTIFICATION_REFERENCE,
+                  position: 20},
+
+               {  id: 'Measures',
+                  parentId: 'Item',
+                  label : 'Measures',
+                  type: #FIELDGROUP_REFERENCE,
+                  targetQualifier: 'Measures',
+                  position: 30}
+             ]
+
+
+
+  @UI.hidden: true
+  HeaderID;
+  @UI: { lineItem: [{ position: 10, importance: #HIGH }],
+        identification: [{ position: 10 }] }
+  ItemID;
+  @UI: { lineItem: [{ position: 20, importance: #HIGH }],
+        identification: [{ position: 20 }] }
+  Name;
+  @UI: { lineItem: [{ position: 30, importance: #HIGH }],
+        identification: [{ position: 30 }] }
+  Description;
+  @UI: { lineItem: [{ position: 40, importance: #HIGH }],
+        identification: [{ position: 40 }] }
+  ReleaseDate;
+  @UI: { lineItem: [{ position: 50, importance: #MEDIUM }],
+        identification: [{ position: 50 }] }
+  DiscontinuedDate;
+  @UI: { lineItem: [{ position: 60, importance: #HIGH }],
+        identification: [{ position: 60 }] }
+  Price;
+  @UI: { fieldGroup: [{ qualifier: 'Measures',
+                          position: 10 }] }
+  Height;
+  @UI: { fieldGroup: [{ qualifier: 'Measures',
+                          position: 20 }] }
+  Width;
+  @UI: { fieldGroup: [{ qualifier: 'Measures',
+                         position: 30 }] }
+  Depth;
+  @UI: { fieldGroup: [{ qualifier: 'Measures',
+                        position: 40 }] }
+  UnitOfMeasure;
+  @UI: { lineItem: [{ position: 60, importance: #HIGH }],
+       identification: [{ position: 60 }] }
+  Quantity;
+
+  @UI.hidden: true
+  LocalLastChangedAt;
+
+
+}

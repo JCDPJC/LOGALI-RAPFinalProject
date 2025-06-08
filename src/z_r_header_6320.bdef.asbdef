@@ -1,0 +1,98 @@
+managed;
+//strict ( 2 );
+
+// SALES ORDER HEADER
+define behavior for Z_R_HEADER_6320 alias Header
+implementation in class zbp_r_header_6320 unique
+persistent table zso_header_6320
+lock master
+authorization master ( instance )
+etag master LocalLastChangedAt  // for authorizations
+{
+
+  // CUD operations together
+  create( authorization : global );
+  update;
+  delete;
+
+  // Associations ------------------------------------------------------------
+  association _Item { create; }
+
+  // READ ONLY FIELDS --------------------------------------------------------
+  // Always audit fields are readonly
+  field ( readonly )  CreateOn, LocalCreatedBy, LocalCreatedAt, LocalLastChangedBy, LastChangedAt;
+
+  // MANDATORY FIELDS --------------------------------------------------------
+  field ( mandatory ) Email;
+
+  field(features : instance) HeaderID;
+
+  // DETERMINATIONS ----------------------------------------------------------
+  //Set CreateOn when CREATE
+  determination setCreateOn on modify { create; }
+
+
+  // Mapping
+  mapping for zso_header_6320
+    {
+      HeaderID           = header_id;
+      Email              = email;
+      FirstName          = firstname;
+      LastName           = lastname;
+      Country            = country;
+      CreateOn           = createon;
+      DeliveryDate       = deliverydate;
+      OrderStatus        = orderstatus;
+      ImageURL           = imageurl;
+      LocalCreatedBy     = local_created_by;
+      LocalCreatedAt     = local_created_at;
+      LocalLastChangedBy = local_last_changed_by;
+      LocalLastChangedAt = local_last_changed_at;
+      LastChangedAt      = last_changed_at;
+    }
+}
+
+// SALES ORDER ITEM
+define behavior for Z_R_ITEM_6320 alias Item
+implementation in class zbp_r_item_6320 unique
+persistent table zso_item_6320
+lock dependent by _Header
+authorization dependent by _Header
+etag master LocalLastChangedAt  //eTag
+{
+  // CUD operations together
+  update;
+  delete;
+
+  // Associations ------------------------------------------------------------
+  association _Header;
+
+  // READ ONLY FIELDS --------------------------------------------------------
+  field ( readonly ) HeaderID;
+
+  field( readonly : update ) ItemID;
+
+  // DETERMINATIONS ----------------------------------------------------------
+
+
+
+  // Mapping
+  mapping for zso_item_6320
+    {
+      HeaderID           = header_id;
+      ItemID             = item_id;
+      Name               = name;
+      Description        = description;
+      ReleaseDate        = releasedate;
+      DiscontinuedDate   = discontinueddate;
+      Price              = price;
+      CurrencyCode       = currency_code;
+      Height             = height;
+      Width              = width;
+      Depth              = depth;
+      Quantity           = quantity;
+      UnitOfMeasure      = unitofmeasure;
+      QuanUnitOfMeasure  = quan_unitofmeasure;
+      LocalLastChangedAt = local_last_changed_at;
+    }
+}
