@@ -8,6 +8,8 @@ define root view entity Z_C_HEADER_6320
   // Only in the parent entity
   provider contract transactional_query
   as projection on Z_R_HEADER_6320
+  
+  
 {
   key HeaderID,
       @Search.defaultSearchElement: true // fuzzy search
@@ -19,9 +21,14 @@ define root view entity Z_C_HEADER_6320
       Country,
       CreateOn,
       DeliveryDate,
-      OrderStatus,
-      ImageURL,
 
+      @Consumption.valueHelpDefinition: [ { entity: { name: 'Z_I_ORDERSTATUS_VH',
+                                                      element: 'OrderStatus' },
+                                                      useForValidation: true } ]
+      @ObjectModel.text.element: [ 'StatusText' ] //With Description
+      OrderStatus,
+      _OrderStatus.Description as StatusText,
+      ImageURL,
 
       LocalCreatedBy,
       LocalCreatedAt,
@@ -29,5 +36,6 @@ define root view entity Z_C_HEADER_6320
       LocalLastChangedAt,
       LastChangedAt,
       /* Associations */
-      _Item : redirected to composition child Z_C_ITEM_6320
+      _Item : redirected to composition child Z_C_ITEM_6320,
+      _OrderStatus
 }

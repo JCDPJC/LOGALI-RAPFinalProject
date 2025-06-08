@@ -26,14 +26,20 @@ define view entity Z_C_ITEM_6320
       Depth,
       @Semantics.quantity.unitOfMeasure : 'QuanUnitOfMeasure'
       Quantity,
-      
+
       @Consumption.valueHelpDefinition: [{ entity: { name: 'I_UnitOfMeasureStdVH',  // SearchHelp
                                                      element: 'UnitOfMeasure' },
-                                                     useForValidation: true }] //Validate UI entry, not WebAPI      
+                                                      additionalBinding: [{ localConstant: 'LENGTH',
+                                                                           element     : 'UnitOfMeasureDimension',
+                                                                           usage       : #FILTER }],
+                                                     useForValidation: true }] //Validate UI entry, not WebAPI
       UnitOfMeasure,
       @Consumption.valueHelpDefinition: [{ entity: { name: 'I_UnitOfMeasureStdVH',  // SearchHelp
                                                      element: 'UnitOfMeasure' },
-                                                     useForValidation: true }] //Validate UI entry, not WebAPI         
+                                                      additionalBinding: [{ localConstant: 'AAAADL',
+                                                                           element     : 'UnitOfMeasureDimension',
+                                                                           usage       : #FILTER }],
+                                                     useForValidation: true }] //Validate UI entry, not WebAPI
       QuanUnitOfMeasure,
       LocalLastChangedAt,
       /* Associations */

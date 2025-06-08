@@ -11,7 +11,7 @@ etag master LocalLastChangedAt  // for authorizations
 {
 
   // CUD operations together
-  create( authorization : global );
+  create ( authorization : global );
   update;
   delete;
 
@@ -20,12 +20,11 @@ etag master LocalLastChangedAt  // for authorizations
 
   // READ ONLY FIELDS --------------------------------------------------------
   // Always audit fields are readonly
-  field ( readonly )  CreateOn, LocalCreatedBy, LocalCreatedAt, LocalLastChangedBy, LastChangedAt;
+  field ( readonly ) CreateOn, LocalCreatedBy, LocalCreatedAt, LocalLastChangedBy, LastChangedAt;
 
   // MANDATORY FIELDS --------------------------------------------------------
-  field ( mandatory ) Email;
-
-  field(features : instance) HeaderID;
+  field ( mandatory : create, mandatory : update ) Email;
+  field ( mandatory : create, readonly : update ) HeaderID;
 
   // DETERMINATIONS ----------------------------------------------------------
   //Set CreateOn when CREATE
@@ -70,7 +69,7 @@ etag master LocalLastChangedAt  //eTag
   // READ ONLY FIELDS --------------------------------------------------------
   field ( readonly ) HeaderID;
 
-  field( readonly : update ) ItemID;
+  field ( mandatory : create, readonly : update ) ItemID;
 
   // DETERMINATIONS ----------------------------------------------------------
 

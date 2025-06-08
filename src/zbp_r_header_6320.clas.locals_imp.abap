@@ -1,9 +1,6 @@
 CLASS lhc_Header DEFINITION INHERITING FROM cl_abap_behavior_handler.
   PRIVATE SECTION.
 
-    METHODS get_instance_features FOR INSTANCE FEATURES
-      IMPORTING keys REQUEST requested_features FOR Header RESULT result.
-
     METHODS get_instance_authorizations FOR INSTANCE AUTHORIZATION
       IMPORTING keys REQUEST requested_authorizations FOR Header RESULT result.
 
@@ -17,19 +14,6 @@ ENDCLASS.
 
 CLASS lhc_Header IMPLEMENTATION.
 
-  METHOD get_instance_features.
-
-    READ ENTITY z_r_header_6320
-      FROM VALUE #( FOR keyval IN keys ( %key = keyval-%key ) )
-      RESULT DATA(lt_header_result).
-
-    result = VALUE #( FOR ls_header IN lt_header_result (
-    %key = ls_header-%key
-    %field-HeaderID = if_abap_behv=>fc-f-read_only ) ).
-
-
-  ENDMETHOD.
-
   METHOD get_instance_authorizations.
   ENDMETHOD.
 
@@ -37,6 +21,27 @@ CLASS lhc_Header IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD setCreateOn.
+
+* Read from entity HEADER
+    READ ENTITIES OF z_r_header_6320 IN LOCAL MODE
+    ENTITY Header
+    FIELDS ( CreateOn )
+    WITH CORRESPONDING #( keys )
+    RESULT DATA(headers).
+
+* Delete HEADER with the field CreateOn already set
+    DELETE headers WHERE CreateOn IS NOT INITIAL.
+
+    CHECK headers IS NOT INITIAL.
+
+
+    MODIFY ENTITIES OF z_r_header_6320 IN LOCAL MODE
+    ENTITY Header
+    UPDATE FIELDS ( CreateOn )
+    WITH VALUE #( FOR header IN headers ( %tky          = header-%tky
+                                          CreateOn = cl_abap_context_info=>get_system_date( ) ) ).
+
+
   ENDMETHOD.
 
 ENDCLASS.

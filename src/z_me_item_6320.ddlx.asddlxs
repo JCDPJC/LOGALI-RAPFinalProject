@@ -67,9 +67,7 @@ annotate entity Z_C_ITEM_6320 with
   @UI: { fieldGroup: [{ qualifier: 'Measures',
                          position: 30 }] }
   Depth;
-  @UI: { fieldGroup: [{ qualifier: 'Measures',
-                        position: 40 }] }
-  UnitOfMeasure;
+
   @UI: { lineItem: [{ position: 60, importance: #HIGH }],
        identification: [{ position: 60 }] }
   Quantity;

@@ -12,6 +12,7 @@ define root view entity Z_I_HEADER_6320
       Country,
       CreateOn,
       DeliveryDate,
+     
       OrderStatus,
       ImageURL,
       //local ETag field --> OData ETag
@@ -22,5 +23,6 @@ define root view entity Z_I_HEADER_6320
       @Semantics.systemDateTime.lastChangedAt: true
       LastChangedAt,
       /* Associations */
-      _Item : redirected to composition child Z_I_ITEM_6320
+      _Item : redirected to composition child Z_I_ITEM_6320,
+      _OrderStatus
 }

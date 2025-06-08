@@ -27,58 +27,61 @@ annotate entity Z_C_HEADER_6320 with
                 label: 'Items',
                 position: 20,
                 targetElement: '_Item' }]  //with LINEITEM_REFERENCE must be a targetElement
-                
+
   @UI: { lineItem: [{ position: 10, importance: #HIGH }],
          identification: [{ position: 10 }],
          selectionField: [{ position: 10 }]
-       }                
+       }
   HeaderID;
   @UI: { lineItem: [{ position: 20, importance: #HIGH }],
-         identification: [{ position: 20 }] 
-       }          
+         identification: [{ position: 20 }]
+       }
   Email;
   @UI: { lineItem: [{ position: 30, importance: #HIGH }],
          identification: [{ position: 30 }],
          selectionField: [{ position: 30 }]
-       }   
+       }
   FirstName;
   @UI: { lineItem: [{ position: 40, importance: #HIGH }],
          identification: [{ position: 40 }],
          selectionField: [{ position: 40 }]
-       }     
+       }
   LastName;
   @UI: { lineItem: [{ position: 50, importance: #HIGH }],
-         identification: [{ position: 50 }] 
-       }            
+         identification: [{ position: 50 }]
+       }
   Country;
   @UI: { lineItem: [{ position: 60, importance: #HIGH }],
-         identification: [{ position: 60 }] 
-       }   
+         identification: [{ position: 60 }]
+       }
   CreateOn;
   @UI: { lineItem: [{ position: 70, importance: #HIGH }],
-         identification: [{ position: 70 }] 
-       }    
+         identification: [{ position: 70 }]
+       }
   DeliveryDate;
   @UI: { lineItem: [{ position: 80, importance: #HIGH }],
          identification: [{ position: 80 }],
-         selectionField: [{ position: 80 }]
-       }   
+         selectionField: [{ position: 80 }],
+         textArrangement: #TEXT_LAST }
   OrderStatus;
-    @UI.hidden: true  
+  @UI.hidden: true
+  Description;
+
+  @UI.hidden: true
   ImageURL;
-  
+
   // Better don't project these fields, if they are not used in the Behaviour Definition
-    @UI.hidden: true
+  @UI.hidden: true
   LocalCreatedBy;
-     @UI.hidden: true
+  @UI.hidden: true
   LocalCreatedAt;
-     @UI.hidden: true
+  @UI.hidden: true
   LocalLastChangedBy;
-     @UI.hidden: true
+  @UI.hidden: true
   LocalLastChangedAt;
-     @UI.hidden: true
+  @UI.hidden: true
   LastChangedAt;
   /* Associations */
- 
+
 
 }

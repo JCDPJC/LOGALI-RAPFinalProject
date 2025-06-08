@@ -4,6 +4,8 @@
 define root view entity Z_R_HEADER_6320
   as select from zso_header_6320
   composition [0..*] of Z_R_ITEM_6320 as _Item
+  
+  association [1..1] to Z_I_ORDERSTATUS_VH as _OrderStatus on $projection.OrderStatus = _OrderStatus.OrderStatus
 {
   key header_id             as HeaderID,
       email                 as Email,
@@ -30,5 +32,6 @@ define root view entity Z_R_HEADER_6320
       @Semantics.systemDateTime.lastChangedAt: true
       last_changed_at       as LastChangedAt,
 
-       _Item // Make association public
+       _Item, // Make association public
+       _OrderStatus
 }
