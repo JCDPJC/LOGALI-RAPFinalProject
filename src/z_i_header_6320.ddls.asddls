@@ -14,6 +14,7 @@ define root view entity Z_I_HEADER_6320
       DeliveryDate,
      
       OrderStatus,
+      
       ImageURL,
       //local ETag field --> OData ETag
       @Semantics.systemDateTime.localInstanceLastChangedAt: true

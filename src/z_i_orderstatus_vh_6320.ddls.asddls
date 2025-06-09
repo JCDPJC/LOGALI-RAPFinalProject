@@ -8,7 +8,7 @@
     dataClass: #MIXED
 }
 //@ObjectModel.resultSet.sizeCategory: #XS
-define view entity Z_I_ORDERSTATUS_VH
+define view entity Z_I_ORDERSTATUS_VH_6320
   as select from    DDCDS_CUSTOMER_DOMAIN_VALUE(
                       p_domain_name : 'ZDO_ORDERSTATUS_6320') as Values
     left outer join DDCDS_CUSTOMER_DOMAIN_VALUE_T(

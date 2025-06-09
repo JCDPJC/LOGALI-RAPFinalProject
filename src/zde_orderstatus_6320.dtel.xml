@@ -19,6 +19,19 @@
     <REFKIND>D</REFKIND>
     <ABAP_LANGUAGE_VERSION>5</ABAP_LANGUAGE_VERSION>
    </DD04V>
+   <I18N_LANGS>
+    <LANGU>S</LANGU>
+   </I18N_LANGS>
+   <DD04_TEXTS>
+    <item>
+     <DDLANGUAGE>S</DDLANGUAGE>
+     <DDTEXT>Estado Pedido</DDTEXT>
+     <REPTEXT>Estado Pedido</REPTEXT>
+     <SCRTEXT_S>Estado</SCRTEXT_S>
+     <SCRTEXT_M>Estado Pedido</SCRTEXT_M>
+     <SCRTEXT_L>Estado Pedido</SCRTEXT_L>
+    </item>
+   </DD04_TEXTS>
   </asx:values>
  </asx:abap>
 </abapGit>
