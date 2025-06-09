@@ -29,7 +29,7 @@ etag master LocalLastChangedAt  // for authorizations
   // DETERMINATIONS ----------------------------------------------------------
   //Set CreateOn when CREATE
   determination setCreateOn on modify { create; }
-
+  determination setStatusOpen on modify { create; }
 
   // Mapping
   mapping for zso_header_6320

@@ -9,6 +9,8 @@ CLASS lhc_Header DEFINITION INHERITING FROM cl_abap_behavior_handler.
 
     METHODS setCreateOn FOR DETERMINE ON MODIFY
       IMPORTING keys FOR Header~setCreateOn.
+    METHODS setStatusOpen FOR DETERMINE ON MODIFY
+      IMPORTING keys FOR Header~setStatusOpen.
 
 ENDCLASS.
 
@@ -38,9 +40,32 @@ CLASS lhc_Header IMPLEMENTATION.
     MODIFY ENTITIES OF z_r_header_6320 IN LOCAL MODE
     ENTITY Header
     UPDATE FIELDS ( CreateOn )
-    WITH VALUE #( FOR header IN headers ( %tky          = header-%tky
+    WITH VALUE #( FOR header IN headers ( %tky     = header-%tky
                                           CreateOn = cl_abap_context_info=>get_system_date( ) ) ).
 
+
+  ENDMETHOD.
+
+  METHOD setStatusOpen.
+
+* Read from entity HEADER
+    READ ENTITIES OF z_r_header_6320 IN LOCAL MODE
+    ENTITY Header
+    FIELDS ( OrderStatus )
+    WITH CORRESPONDING #( keys )
+    RESULT DATA(headers).
+
+* Delete HEADER with the field CreateOn already set
+    DELETE headers WHERE OrderStatus IS NOT INITIAL.
+
+    CHECK headers IS NOT INITIAL.
+
+
+    MODIFY ENTITIES OF z_r_header_6320 IN LOCAL MODE
+    ENTITY Header
+    UPDATE FIELDS ( OrderStatus )
+    WITH VALUE #( FOR header IN headers ( %tky        = header-%tky
+                                          OrderStatus = 2 ) ).
 
   ENDMETHOD.
 

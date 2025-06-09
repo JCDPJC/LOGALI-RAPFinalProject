@@ -22,12 +22,13 @@ define root view entity Z_C_HEADER_6320
       CreateOn,
       DeliveryDate,
 
-      @Consumption.valueHelpDefinition: [ { entity: { name: 'Z_I_ORDERSTATUS_VH_6320',
-                                                      element: 'OrderStatus' } } ]
+      @Consumption.valueHelpDefinition: [ { entity: { name: 'Z_I_ORDER_STATUS_VH_6320',
+                                                      element: 'OrderStatus' },
+                                                      useForValidation: true  } ]
       @ObjectModel.text.element: [ 'StatusText' ] //With Description
 
       OrderStatus,
-      _OrderStatus.Description as StatusText,
+      _OrderStatus._Text.Text as StatusText : localized,
       ImageURL,
 
       LocalCreatedBy,

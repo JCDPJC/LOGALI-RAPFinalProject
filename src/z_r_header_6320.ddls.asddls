@@ -5,7 +5,7 @@ define root view entity Z_R_HEADER_6320
   as select from zso_header_6320
   composition [0..*] of Z_R_ITEM_6320 as _Item
   
-  association [1..1] to Z_I_ORDERSTATUS_VH_6320 as _OrderStatus on $projection.OrderStatus = _OrderStatus.OrderStatus
+  association [1..1] to Z_I_ORDER_STATUS_VH_6320 as _OrderStatus on $projection.OrderStatus = _OrderStatus.OrderStatus
 {
   key header_id             as HeaderID,
       email                 as Email,

@@ -17,7 +17,7 @@ define view entity Z_I_ORDERSTATUS_VH_6320
                                                                        and Texts.language       = $session.system_language
 {
       @ObjectModel.text.element: [ 'Description' ]
-      @UI.textArrangement: #TEXT_LAST
+      @UI.textArrangement: #TEXT_SEPARATE
   key cast( Values.value_low as abap.int1 ) as OrderStatus,
       Texts.text       as Description
 }
